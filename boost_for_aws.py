@@ -91,7 +91,7 @@ nn = KerasRegressor(build_fn=nn_model, nb_epoch=epo, batch_size=10,
                            verbose=0) 
 print("seat back and relax. I am training")
 boost_nn = en.BaggingRegressor(base_estimator = nn,
-                                   n_estimators = 500,
+                                   n_estimators =100,
                                    max_samples=1.0, 
                                    max_features=100, 
                                    bootstrap=True, 
@@ -113,4 +113,4 @@ train_submit = data_submit_dummy.iloc[:,impvars]
 train_submit = std.transform(train_submit)
 loss_submit = boost_nn.predict(train_submit)
 to_submit= pd.DataFrame({'id': submit_id, 'loss' : loss_submit})
-to_submit.to_csv('submitboost3.csv', index=False)
+to_submit.to_csv('submitboost4.csv', index=False)
